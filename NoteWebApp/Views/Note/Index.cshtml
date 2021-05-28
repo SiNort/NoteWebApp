@@ -1,0 +1,25 @@
+﻿@model IEnumerable<NoteWebApp.Models.Note>
+@{
+    ViewData["Title"] = "Notes";
+}
+<a asp-action="Create">Create a note</a>
+<table class="table table-hover" style="table-layout: fixed;">
+    <thead style="background: #343a40; color: #fff">
+        <tr>
+            <td style="width: 10%;">Id</td>
+            <td>Title</td>
+            <td>Text</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr onclick="location.href = '@(Url.Action("Display", "Note", new { item.Id }))'">
+                <td style="width: 10%;">@item.Id</td>
+                <td style="overflow: hidden; text-overflow: ellipsis;">@item.Title</td>
+                <td style="overflow: hidden; text-overflow: ellipsis;">@item.Text</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
